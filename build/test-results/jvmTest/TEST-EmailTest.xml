@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="EmailTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-06T06:07:31" hostname="LAPTOP-NUCFJUSF" time="20.333">
+  <properties/>
+  <testcase name="testEmail()[jvm]" classname="EmailTest" time="20.333"/>
+  <system-out><![CDATA[>>Socket connection with smtp server succeed at server: smtp.office365.com, server host: 25.
+
+>>Received message: 220 HK2PR02CA0198.outlook.office365.com Microsoft ESMTP MAIL Service ready at Fri, 6 May 2022 06:07:30 +0000
+
+>>Message has sent:helo a
+>>Received message: 250 HK2PR02CA0198.outlook.office365.com Hello [180.167.101.178]
+
+>>Message has sent:auth login
+>>Received message: 504 5.7.4 Unrecognized authentication type [HK2PR02CA0198.apcprd02.prod.outlook.com]
+
+>>Message has sent:cmFnLmVsbkByYWN0aWdlbi5jb20=
+>>Received message: 500 5.3.3 Unrecognized command 'cmFnLmVsbkByYWN0aWdlbi5jb20=' [HK2PR02CA0198.apcprd02.prod.outlook.com]
+
+>>Message has sent:YWFhYWFhLjE=
+>>Received message: 500 5.3.3 Unrecognized command 'YWFhYWFhLjE=' [HK2PR02CA0198.apcprd02.prod.outlook.com]
+
+>>Message has sent:mail from:<rag.eln@ractigen.com>
+>>Received message: 451 5.7.3 STARTTLS is required to send mail [HK2PR02CA0198.apcprd02.prod.outlook.com]
+
+>>Message has sent:rcpt to:<rag.eln@ractigen.com>
+>>Message has sent:data
+>>Message has sent:From:1711968378@qq.com
+To:1711968378@qq.com
+Subject:subject Hello from kotlin!
+
+contetn from kotlin!
+
+.
+>>Socket closed!!!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

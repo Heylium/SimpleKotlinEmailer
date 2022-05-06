@@ -1,0 +1,29 @@
+^>>Socket connection with smtp server succeed at server: smtp.office365.com, server host: 25.
+
+‚>>Received message: 220 HK2PR02CA0198.outlook.office365.com Microsoft ESMTP MAIL Service ready at Fri, 6 May 2022 06:07:30 +0000
+
+>>Message has sent:helo a
+U>>Received message: 250 HK2PR02CA0198.outlook.office365.com Hello [180.167.101.178]
+
+>>Message has sent:auth login
+j>>Received message: 504 5.7.4 Unrecognized authentication type [HK2PR02CA0198.apcprd02.prod.outlook.com]
+
+1>>Message has sent:cmFnLmVsbkByYWN0aWdlbi5jb20=
+}>>Received message: 500 5.3.3 Unrecognized command 'cmFnLmVsbkByYWN0aWdlbi5jb20=' [HK2PR02CA0198.apcprd02.prod.outlook.com]
+
+!>>Message has sent:YWFhYWFhLjE=
+m>>Received message: 500 5.3.3 Unrecognized command 'YWFhYWFhLjE=' [HK2PR02CA0198.apcprd02.prod.outlook.com]
+
+5>>Message has sent:mail from:<rag.eln@ractigen.com>
+k>>Received message: 451 5.7.3 STARTTLS is required to send mail [HK2PR02CA0198.apcprd02.prod.outlook.com]
+
+3>>Message has sent:rcpt to:<rag.eln@ractigen.com>
+>>Message has sent:data
++>>Message has sent:From:1711968378@qq.com
+To:1711968378@qq.com
+$Subject:subject Hello from kotlin!
+
+contetn from kotlin!
+
+.
+>>Socket closed!!!
