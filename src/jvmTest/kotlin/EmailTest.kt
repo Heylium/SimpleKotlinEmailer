@@ -1,10 +1,10 @@
 import kotlin.test.Test
 
 data class Email(
-    val smtpServer:String = "smtp.qq.com",
-    val smtpHost:Int = 25,
-    val username:String = "1711968378@qq.com",
-    val password:String = "nmfmvithpuyghdfc",
+    val smtpServer:String = "<your target smtp server>",
+    val smtpHost:Int = <your smtp server port>,
+    val username:String = "<your email or your defined name>",
+    val password:String = "<your email password>",
     val toEmail: String = username,
 )
 class EmailTest {
