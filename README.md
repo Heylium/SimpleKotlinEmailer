@@ -3,7 +3,7 @@ A simple email sender &amp;&amp; test function in kotlin
 # Usage manual
 After imported, you can use this liborary like example in src/jvmTest/kotlin/EmailTest.kt
 
-'''
+···kotlin
 SimpleEmailSender()
             .setServer(<your smtp server>)
             .setHost(<your smtp port>)
@@ -14,4 +14,4 @@ SimpleEmailSender()
             .setSubject(<set your email subject>)
             .setContent(<set your email content>)
             .send()
-'''
+···
