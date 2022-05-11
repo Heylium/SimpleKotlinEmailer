@@ -1,0 +1,91 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "url": "../../KotlinSimpleEmailSender/1.0-SNAPSHOT/KotlinSimpleEmailSender-1.0-SNAPSHOT.module",
+    "group": "me.tuanhsiang",
+    "module": "KotlinSimpleEmailSender",
+    "version": "1.0-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "jvmApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-common",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "KotlinSimpleEmailSender-jvm-1.0-SNAPSHOT.jar",
+          "url": "KotlinSimpleEmailSender-jvm-1.0-SNAPSHOT.jar",
+          "size": 7592,
+          "sha512": "9d8801ffba7566d2a57ec7fcbfdfb76a672e170d539306d154e96206fcff0bcbde7c9243a6975f1e2beef490ce27dceed443c759a65c979c1d95b1e41e21469d",
+          "sha256": "840cd570d1fe675471267af4452308d414c61c95d59b1ab366ada2edaf66e591",
+          "sha1": "0ef727d26cf23a047adfc139499e715ca6a95ada",
+          "md5": "b7bdcacfdbb56a9c9b2d2c993abe6309"
+        }
+      ]
+    },
+    {
+      "name": "jvmRuntimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-common",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "KotlinSimpleEmailSender-jvm-1.0-SNAPSHOT.jar",
+          "url": "KotlinSimpleEmailSender-jvm-1.0-SNAPSHOT.jar",
+          "size": 7592,
+          "sha512": "9d8801ffba7566d2a57ec7fcbfdfb76a672e170d539306d154e96206fcff0bcbde7c9243a6975f1e2beef490ce27dceed443c759a65c979c1d95b1e41e21469d",
+          "sha256": "840cd570d1fe675471267af4452308d414c61c95d59b1ab366ada2edaf66e591",
+          "sha1": "0ef727d26cf23a047adfc139499e715ca6a95ada",
+          "md5": "b7bdcacfdbb56a9c9b2d2c993abe6309"
+        }
+      ]
+    }
+  ]
+}

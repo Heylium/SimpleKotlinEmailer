@@ -1,29 +1,26 @@
 import kotlin.test.Test
 
-data class Email(
-    val smtpServer:String = "smtp.qq.com",
-    val smtpHost:Int = 25,
-    val username:String = "1711968378@qq.com",
-    val password:String = "nmfmvithpuyghdfc",
-    val toEmail: String = username,
-)
 class EmailTest {
     @Test
-    fun testEmail(){
-        val email = Email()
-        val ttl = SimpleEmailSender(
-            email.smtpServer,
-            email.smtpHost,
-            email.username,
-            email.password,
-            email.toEmail,
-            )
-        ttl.setFrom("1711968378@qq.com")
-            .setTo("1711968378@qq.com")
-            .setSubject("subject Hello from kotlin!")
-            .setContent("contetn from kotlin!")
-            .send()
-        ttl.closeSocket()
-    }
+    fun test_email(){
+        val params1 = arrayListOf(
+            "smtp.qq.com",
+            "1711968378@qq.com",
+            "nmfmvithpuyghdfc",
+            "subject Hello from kotlin!",
+            "contetn from kotlin!"
 
+        )
+        SimpleEmailSender()
+            .setServer(params1[0])
+            .setHost(25)
+            .setFrom(params1[1])
+            .setTo(params1[1])
+            .setUsername(params1[1])
+            .setPassword(params1[2])
+            .setSubject(params1[3])
+            .setContent(params1[4])
+            .send()
+
+    }
 }
