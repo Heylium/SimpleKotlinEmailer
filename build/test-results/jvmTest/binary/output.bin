@@ -1,11 +1,11 @@
 W>>Socket connection with smtp server succeed at server: smtp.qq.com, server host: 25.
 
-S<<Received message: 220 newxmesmtplogicsvrszc8.qq.com XMail Esmtp QQ Mail Server.
+S<<Received message: 220 newxmesmtplogicsvrszb6.qq.com XMail Esmtp QQ Mail Server.
 
-A<<220 newxmesmtplogicsvrszc8.qq.com XMail Esmtp QQ Mail Server.
+A<<220 newxmesmtplogicsvrszb6.qq.com XMail Esmtp QQ Mail Server.
 
 >>Message has sent:helo a
-K<<Received message: 250-newxmesmtplogicsvrszc8.qq.com-9.46.31.207-3825850
+N<<Received message: 250-newxmesmtplogicsvrszb6.qq.com-100.65.28.131-10778285
 250-SIZE 73400320
 250 OK
 
@@ -28,13 +28,13 @@
 
 :<<Received message: 354 End data with <CR><LF>.<CR><LF>.
 
-+>>Message has sent:From:1711968378@qq.com
-To:1711968378@qq.com
++>>Message has sent:from:1711968378@qq.com
+to:1711968378@qq.com
 $Subject:subject Hello from kotlin!
 
 contetn from kotlin!
-
 .
+
 (<<Received message: 250 OK: queued as.
 
 >>Message has sent:quit

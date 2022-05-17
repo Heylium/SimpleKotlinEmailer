@@ -11,14 +11,13 @@ class SimpleEmailSender {
     private var streamIn: InputStream? = null
     private var streamOut: OutputStream? = null
     private var isConnected: Boolean = false
-
     private var smtpServer: String? = null
+
     private var smtpHost: Int? = null
     private var encrypt: String? = null
     private var username: String? = null
-    private var password:String? = null
-
-    private var emailBody = Email()
+    private var password: String? = null
+    private var emailBody: Email = Email()
 
     private fun sendMessage(outMessage: String?): SimpleEmailSender {
         var sendMsg: String = outMessage!!
@@ -32,6 +31,7 @@ class SimpleEmailSender {
         }
         return this
     }
+
     private fun receiveMessage(): String? {
         val message: String
         val inStream = InputStreamReader(streamIn!!)
@@ -49,7 +49,7 @@ class SimpleEmailSender {
         return message
     }
 
-    private fun connect(){
+    private fun connect() {
         try {
             socket = Socket(smtpServer!!, smtpHost!!)
             socket!!.soTimeout = 60000
@@ -69,7 +69,8 @@ class SimpleEmailSender {
             throw Exception(">>Connection could not be established for unknown host exception.\r\n")
         }
     }
-    private fun afterConnect():SimpleEmailSender{
+
+    private fun afterConnect(): SimpleEmailSender {
         println("<<${this.receiveMessage()}")
         return this
     }
@@ -78,86 +79,100 @@ class SimpleEmailSender {
         return Base64.getEncoder().encodeToString(str.toByteArray())
     }
 
-    private fun getRetCode(retMsg:String):String?{
-        if (retMsg.length < 3){
+    private fun getRetCode(retMsg: String): String? {
+        if (retMsg.length < 3) {
             return null
         }
         return retMsg.substring(0..2)
     }
-    private fun checkRetCode(retCode:String){
+
+    private fun checkRetCode(retCode: String) {
         val statusCode = getRetCode(retCode)
-        if (retCode[0] == '5'){
+        if (retCode[0] == '5') {
             throw Exception(">>Server returned error:\n$retCode")
-        }else if (retCode[0] == '4'){
+        } else if (retCode[0] == '4') {
             throw Exception(">>Server returned error:\n$retCode")
         }
     }
 
-    private fun sayHello():SimpleEmailSender{
+    private fun sayHello(): SimpleEmailSender {
         val serverMsg = this.sendMessage("helo a").receiveMessage()
-        if(getRetCode(serverMsg!!) != "250"){
+        if (getRetCode(serverMsg!!) != "250") {
             throw Exception("<<Expected code 250, but got $serverMsg\r\n")
         }
         return this
     }
-    private fun sayAuth():SimpleEmailSender{
+
+    private fun sayAuth(): SimpleEmailSender {
         val serverMsg = this.sendMessage("AUTH LOGIN").receiveMessage()
         if (getRetCode(serverMsg!!) != "334") {
             throw Exception("<<Expected code 334, but got $serverMsg\r\n")
         }
         return this
     }
-    private fun login():SimpleEmailSender{
+
+    private fun login(): SimpleEmailSender {
         val authKey = this.sendMessage(this.encodeFn(username!!)).receiveMessage()
         if (getRetCode(authKey!!) != "334") {
             throw Exception("<<Expected code 334, but got $authKey\r\n")
         }
         val authPsd = this.sendMessage(this.encodeFn(password!!)).receiveMessage()
-        if (getRetCode(authPsd!!) != "235"){
+        if (getRetCode(authPsd!!) != "235") {
             throw Exception("<<Expected code 235, but got $authPsd\r\n")
         }
         return this
     }
-    private fun sayFrom():SimpleEmailSender{
+
+    private fun sayFrom(): SimpleEmailSender {
         val serverMsg = this.sendMessage("mail from:<${emailBody.from}>").receiveMessage()
-        if (getRetCode(serverMsg!!) != "250"){
+        if (getRetCode(serverMsg!!) != "250") {
             throw Exception("<<Expected code 250, but got $serverMsg\r\n")
         }
         return this
     }
-    private fun sayTo():SimpleEmailSender{
+
+    private fun sayTo(): SimpleEmailSender {
         val serverMsg = this.sendMessage("rcpt to:<${emailBody.to}>").receiveMessage()
-        if (getRetCode(serverMsg!!) != "250"){
+        if (getRetCode(serverMsg!!) != "250") {
             throw Exception("<<Expected code 250, but got $serverMsg\r\n")
         }
         return this
     }
-    private fun sayData(): SimpleEmailSender{
+
+    private fun sayData(): SimpleEmailSender {
         val serverMsg = this.sendMessage("data\r\n").receiveMessage()
-        if (getRetCode(serverMsg!!) != "354"){
+        if (getRetCode(serverMsg!!) != "354") {
             throw Exception("<<Expected code 354, but got $serverMsg\r\n")
         }
         return this
     }
-    private fun sayContent():SimpleEmailSender{
+
+    private fun sayContent(): SimpleEmailSender {
         val mailStr = emailBody.buildEmailBody()
         val serverMsg = this.sendMessage(mailStr).receiveMessage()
-        if (getRetCode(serverMsg!!) != "250"){
+        if (getRetCode(serverMsg!!) != "250") {
             throw Exception("<<Expected code 250, but got $serverMsg\r\n")
         }
         return this
     }
-    private fun sayQuit():SimpleEmailSender{
+
+    private fun sayQuit(): SimpleEmailSender {
         println("<<${this.sendMessage("quit").receiveMessage()}")
         return this
     }
-    private fun close(){
+
+    private fun close() {
+        var afterBye = this.receiveMessage()
+        while (afterBye != null && isConnected) {
+            afterBye = this.receiveMessage()
+        }
         socket!!.close()
+        isConnected = false
     }
 
-    fun send(){
+    fun send() {
         this.connect()
-        if (!isConnected || socket == null || streamIn == null || streamOut == null){
+        if (!isConnected || socket == null || streamIn == null || streamOut == null) {
             throw Exception(">>Socket connection failed")
         }
         this.afterConnect()
@@ -170,7 +185,6 @@ class SimpleEmailSender {
             .sayContent()
             .sayQuit()
             .close()
-
     }
 
 
@@ -187,7 +201,7 @@ class SimpleEmailSender {
             if (to == null) {
                 throw Exception(">>no email receiver, Email cannot send!\r\n")
             }
-            return "From:${this.from}\r\nTo:${this.to}\r\nSubject:${this.subject}\r\n\r\n${this.content}\r\n\r\n."
+            return "from:${this.from}\r\nto:${this.to}\r\nSubject:${this.subject}\r\n\r\n${this.content}\r\n.\r\n"
         }
     }
 
@@ -195,35 +209,43 @@ class SimpleEmailSender {
         emailBody.from = from
         return this
     }
+
     fun setTo(to: String): SimpleEmailSender {
         emailBody.to = to
         return this
     }
+
     fun setSubject(subject: String): SimpleEmailSender {
         emailBody.subject = subject
         return this
     }
+
     fun setContent(content: String): SimpleEmailSender {
         emailBody.content = content
         return this
     }
-    fun setEncrypt(encryptProto:String):SimpleEmailSender{
+
+    fun setEncrypt(encryptProto: String): SimpleEmailSender {
         encrypt = encryptProto.lowercase()
         return this
     }
-    fun setServer(server:String): SimpleEmailSender{
+
+    fun setServer(server: String): SimpleEmailSender {
         smtpServer = server
         return this
     }
-    fun setHost(host:Int):SimpleEmailSender{
+
+    fun setHost(host: Int): SimpleEmailSender {
         smtpHost = host
         return this
     }
-    fun setUsername(name:String):SimpleEmailSender{
+
+    fun setUsername(name: String): SimpleEmailSender {
         username = name
         return this
     }
-    fun setPassword(psd:String):SimpleEmailSender{
+
+    fun setPassword(psd: String): SimpleEmailSender {
         password = psd
         return this
     }
