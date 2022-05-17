@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="EmailTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-11T15:59:28" hostname="LAPTOP-NUCFJUSF" time="1.102">
+<testsuite name="EmailTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-17T15:30:01" hostname="LAPTOP-NUCFJUSF" time="1.094">
   <properties/>
-  <testcase name="test_email()[jvm]" classname="EmailTest" time="1.102"/>
+  <testcase name="test_email()[jvm]" classname="EmailTest" time="1.094"/>
   <system-out><![CDATA[>>Socket connection with smtp server succeed at server: smtp.qq.com, server host: 25.
 
-<<Received message: 220 newxmesmtplogicsvrszc8.qq.com XMail Esmtp QQ Mail Server.
+<<Received message: 220 newxmesmtplogicsvrszc10.qq.com XMail Esmtp QQ Mail Server.
 
-<<220 newxmesmtplogicsvrszc8.qq.com XMail Esmtp QQ Mail Server.
+<<220 newxmesmtplogicsvrszc10.qq.com XMail Esmtp QQ Mail Server.
 
 >>Message has sent:helo a
-<<Received message: 250-newxmesmtplogicsvrszc8.qq.com-9.46.31.207-3825850
+<<Received message: 250-newxmesmtplogicsvrszc10.qq.com-9.46.30.139-20305016
 250-SIZE 73400320
 250 OK
 
@@ -32,12 +32,12 @@
 
 <<Received message: 354 End data with <CR><LF>.<CR><LF>.
 
->>Message has sent:From:1711968378@qq.com
-To:1711968378@qq.com
+>>Message has sent:from:1711968378@qq.com
+to:1711968378@qq.com
 Subject:subject Hello from kotlin!
 
 contetn from kotlin!
-
+.
 .
 <<Received message: 250 OK: queued as.
 
