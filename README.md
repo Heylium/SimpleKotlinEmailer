@@ -17,5 +17,5 @@ SimpleEmailSender()
             .send()
 ```
 
-#NOTICE
+# NOTICE
 Now, this project only support "debug" mode, which means it will print out all the message it received from socket stream. But in further development, I will add "user" mode to make it can be used as a simple email sender lib. For even further, I want to make it based on openssl to get better compatibility and sercurity.
