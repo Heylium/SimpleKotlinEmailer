@@ -6,6 +6,19 @@ import java.net.Socket
 import java.net.UnknownHostException
 import java.util.*
 
+/**
+ * The class of the kotlinSimpleEmailSender,
+ * no parameter required when calling an instance of it.
+ * You can use setServer() method to set a specific smtp server
+ * setHost() method set the smtp server host port
+ * setUsername() method set the username to login smtp server
+ * setPassword() method set the password to login smtp server
+ * setFrom() method set the sender email
+ * setTo() method set the receiver email
+ * setSubject() method set the email subject
+ * setContent() method set the email content
+ *
+ */
 class SimpleEmailSender {
     private var socket: Socket? = null
     private var streamIn: InputStream? = null
