@@ -200,7 +200,8 @@ class SimpleEmailSender {
             .close()
     }
 
-
+    //The email data class,
+    //which contains email sender, receiver, subject and content fields.
     data class Email(
         var from: String? = "null",
         var to: String? = "",
@@ -218,46 +219,55 @@ class SimpleEmailSender {
         }
     }
 
+    //set the sender email
     fun setFrom(from: String): SimpleEmailSender {
         emailBody.from = from
         return this
     }
 
+    //set the receiver email
     fun setTo(to: String): SimpleEmailSender {
         emailBody.to = to
         return this
     }
 
+    //set email subject
     fun setSubject(subject: String): SimpleEmailSender {
         emailBody.subject = subject
         return this
     }
 
+    //set email content
     fun setContent(content: String): SimpleEmailSender {
         emailBody.content = content
         return this
     }
 
+    //method to set smtp server encrypt type, not used yet
     fun setEncrypt(encryptProto: String): SimpleEmailSender {
         encrypt = encryptProto.lowercase()
         return this
     }
 
+    //method to set smtp server
     fun setServer(server: String): SimpleEmailSender {
         smtpServer = server
         return this
     }
 
+    //method to set smtp server host
     fun setHost(host: Int): SimpleEmailSender {
         smtpHost = host
         return this
     }
 
+    //method to set the username on smtp server
     fun setUsername(name: String): SimpleEmailSender {
         username = name
         return this
     }
 
+    //method to set the password on smtp server
     fun setPassword(psd: String): SimpleEmailSender {
         password = psd
         return this
